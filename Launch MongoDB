@@ -1,0 +1,40 @@
+Basic terminologies:
+RDBMS    Mongo        
+Table   Collection		
+Rows	  Document		 o
+Column  Fields
+-------------------------------------------
+        RDBMS                   Mongo
+DB     1 or more Tables      	1 or more Collection			 
+Server 1 or more DBs          1 or more DBs
+
+-------------------------------------------	    
+Daemon Server (Mongod) : Mongod must be in the bin directory,  Database Server
+- To start a server:
+  - mongod
+  - port
+  - database path
+
+Case I: START WITH DEFAULT VALUES
+  1. set a path to the Env Varibale : C:\Users\ChawdaK\Downloads\mongodb-win32-x86_64-enterprise-windows-64-3.4.23\bin
+  2. cmd-> mongod
+   -get error : data directory not found "dbpath=C:\data\db\"
+  - make a directory as \data\db\ in C drive 
+  - default port=27017 and dbpath=C:\data\db\
+  O/P: [thread1] waiting for connections on port 27017 [If server started successfully]
+  3. to connect with  Mongo server through client: 
+  - Command: C:\Users\ChawdaK>mongo 
+  O/P : MongoDB Enterprise > 
+  4. Basic COmmands:
+  i) show dbs : 
+  
+  CASEC II : CUSTOME DBPATH AND PORT
+  Note : to run multiple mongo instances/server We must have unique
+  - DB Path : else we will get error "exception in initAndListen: 98 Unable to create/open lock file: C:\data\db\mongod.lock 
+              The process cannot access the file because it is being used by another process.. Is a mongod instance already running?, 
+              terminating"
+              - craete new directory, O/P in logs--> options: { storage: { dbPath: "C:\data\db2\" } }"
+  - Port: else we will get error " listen(): bind() failed Only one usage of each socket address (protocol/network address/port)
+          is normally permitted. for socket: 0.0.0.0:27017"
+  1. start  Command : start /b mongod --dbpath C:\data\db2\  --port 40000
+  O/P : I NETWORK  [thread1] waiting for connections on port 40000
